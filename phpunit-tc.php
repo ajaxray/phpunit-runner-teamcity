@@ -204,8 +204,8 @@ class TeamCity_PHPUnit_TextUI_Command
     protected function createRunner()
     {
         // Disable coverage on the current file
-        $coverage_Filter = new PHP_CodeCoverage_Filter();
-        $coverage_Filter->addFileToBlacklist(__FILE__);
+        $coverage_Filter = new \SebastianBergmann\CodeCoverage\Filter();
+        $coverage_Filter->removeFileFromWhitelist(__FILE__);
         $runner = new PHPUnit_TextUI_TestRunner($this->arguments['loader'], $coverage_Filter);
         return $runner;
     }
